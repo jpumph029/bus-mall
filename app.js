@@ -81,6 +81,9 @@ function handlesUserClicks() {
     // do something or nothing. 
   }
 }
+<<<<<<< HEAD
 function displayChart() {
   
 }
+=======
+>>>>>>> a975498410342146c157845f0cb72228dbf4d2a7
