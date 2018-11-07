@@ -7,7 +7,7 @@ var optionName = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum'
 function Option(name, src) {
   this.name = name;
   this.src = src;
-
+  this.clicks = 0;
   allOptions.push(this);
 }
 
@@ -28,25 +28,60 @@ function getRandomOption() {
 }
 getRandomOption();
 
-
+// makes sure the number in threeOpt are unique
 function isUnique() {
-if (threeOpt[0] !== threeOpt[1] && threeOpt[1] !== threeOpt[2] && threeOpt[2] !== threeOpt[0]) {
-  return true;
-} else {
-  return false;
+  if (threeOpt[0] !== threeOpt[1] && threeOpt[1] !== threeOpt[2] && threeOpt[2] !== threeOpt[0]) {
+    return true;
+  } else {
+    return false;
+  }
 }
-}
-
+// if threeOpt[] is unique push images to the screen
 function getUniqueOptions() {
-if (isUnique() === true) {
-  var opt1 = document.getElementById('opt1').src = allOptions[threeOpt[0]].src;
-  var opt2 = document.getElementById('opt2').src = allOptions[threeOpt[1]].src;
-  var opt3 = document.getElementById('opt3').src = allOptions[threeOpt[2]].src;
-  return;
-} else{ 
-  threeOpt = [];
-  getRandomOption(); 
-  getUniqueOptions();
-} 
+  if (isUnique() === true) {
+    var opt1 = document.getElementById('opt1').src = allOptions[threeOpt[0]].src;
+    var opt2 = document.getElementById('opt2').src = allOptions[threeOpt[1]].src;
+    var opt3 = document.getElementById('opt3').src = allOptions[threeOpt[2]].src;
+    return;
+  } else {
+    threeOpt = [];
+    getRandomOption();
+    getUniqueOptions();
+  }
 }
 getUniqueOptions();
+
+function drawImages() {
+    threeOpt = [];
+    getRandomOption();
+    getUniqueOptions();
+    
+  }
+
+
+
+
+
+// function addsClicks() {
+  //   Option.clicks++;
+//   console.log("clicks: ", this.clicks);
+// }
+
+
+document.getElementById('opt1').addEventListener('click', drawImages);
+document.getElementById('opt2').addEventListener('click', drawImages);
+document.getElementById('opt3').addEventListener('click', drawImages);
+
+        function handlesUserClicks() {
+          for (var i = 0; i < allOptions.length; i++) {
+            if (allOptions[i].name === event.target.id) {
+                allOptions[i].clicks++;
+            }
+          }
+          if (clicks < 25) {
+            getUniqueOptions();
+          }
+          else if (clicks === 25) {
+        
+          }
+        }
