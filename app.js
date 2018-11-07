@@ -5,6 +5,7 @@ var threeOpt = [];
 var opt1 = '';
 var opt2 = '';
 var opt3 = '';
+this.maxClicks = 0;
 var optionName = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
 function Option(name, src) {
@@ -21,13 +22,13 @@ function Option(name, src) {
     console.log('you made all Options');
   }
 })();
-//generates 3 randoms numbers ------- TO DO: THESE ARENT UNIQUE YET
+
+//generates 3 randoms numbers and pushes them to threeOpt
 function getRandomOption() {
   for (var i = 0; i < 3; i++) {
     threeOpt.push(Math.floor(Math.random() * optionName.length))
   };
-  return console.log('You generated 3 random options', threeOpt);
-
+  // return console.log('You generated 3 random options', threeOpt);
 }
 getRandomOption();
 
@@ -39,6 +40,7 @@ function isUnique() {
     return false;
   }
 }
+
 // if threeOpt[] is unique push images to the screen
 function getUniqueOptions() {
   if (isUnique() === true) {
@@ -54,29 +56,28 @@ function getUniqueOptions() {
 }
 getUniqueOptions();
 
-function drawImages() {
-    threeOpt = [];
-    getRandomOption();
-    getUniqueOptions();
-    
-  }
+// 
+function drawOptions() {
+  threeOpt = [];
+  getRandomOption();
+  getUniqueOptions();
+}
 
-
+// makes the Options clickable
 document.getElementById('opt1').addEventListener('click', handlesUserClicks);
 document.getElementById('opt2').addEventListener('click', handlesUserClicks);
 document.getElementById('opt3').addEventListener('click', handlesUserClicks);
 
-        function handlesUserClicks() {
-          var maxClicks = 0;
-          for (var i = 0; i < allOptions.length; i++) {
-            if (allOptions[i].src === opt1 || allOptions[i].src === opt2 || allOptions[i].src === opt3) {
-                allOptions[i].clicks++;
-            }
-          }
-          if (maxClicks< 25) {
-            drawImages();
-          }
-          else if (clicks === 25) {
-        
-          }
-        }
+function handlesUserClicks() {
+  for (var i = 0; i < allOptions.length; i++) {
+    if (allOptions[i].src === opt1 || allOptions[i].src === opt2 || allOptions[i].src === opt3) {
+      allOptions[i].clicks++;
+      maxClicks++;
+    }
+  }
+  if (maxClicks <= 25) {
+    drawOptions();
+  } else if (maxClicks === 25) {
+    // do something or nothing. 
+  }
+}
