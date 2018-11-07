@@ -2,6 +2,9 @@
 'use strict';
 var allOptions = [];
 var threeOpt = [];
+var opt1 = '';
+var opt2 = '';
+var opt3 = '';
 var optionName = ['bag', 'banana', 'bathroom', 'boots', 'breakfast', 'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 'scissors', 'shark', 'sweep', 'tauntaun', 'unicorn', 'usb', 'water-can', 'wine-glass'];
 
 function Option(name, src) {
@@ -39,7 +42,7 @@ function isUnique() {
 // if threeOpt[] is unique push images to the screen
 function getUniqueOptions() {
   if (isUnique() === true) {
-    var opt1 = document.getElementById('opt1').src = allOptions[threeOpt[0]].src;
+    opt1 = document.getElementById('opt1').src = allOptions[threeOpt[0]].src;
     var opt2 = document.getElementById('opt2').src = allOptions[threeOpt[1]].src;
     var opt3 = document.getElementById('opt3').src = allOptions[threeOpt[2]].src;
     return;
@@ -59,27 +62,19 @@ function drawImages() {
   }
 
 
-
-
-
-// function addsClicks() {
-  //   Option.clicks++;
-//   console.log("clicks: ", this.clicks);
-// }
-
-
-document.getElementById('opt1').addEventListener('click', drawImages);
-document.getElementById('opt2').addEventListener('click', drawImages);
-document.getElementById('opt3').addEventListener('click', drawImages);
+document.getElementById('opt1').addEventListener('click', handlesUserClicks);
+document.getElementById('opt2').addEventListener('click', handlesUserClicks);
+document.getElementById('opt3').addEventListener('click', handlesUserClicks);
 
         function handlesUserClicks() {
+          var maxClicks = 0;
           for (var i = 0; i < allOptions.length; i++) {
-            if (allOptions[i].name === event.target.id) {
+            if (allOptions[i].src === opt1 || allOptions[i].src === opt2 || allOptions[i].src === opt3) {
                 allOptions[i].clicks++;
             }
           }
-          if (clicks < 25) {
-            getUniqueOptions();
+          if (maxClicks< 25) {
+            drawImages();
           }
           else if (clicks === 25) {
         
