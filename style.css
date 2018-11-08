@@ -1,1 +1,40 @@
+html {
+    padding-left: 24%;
+    padding-right: 24%;
+    background-color: whitesmoke;
+}
+img#opt1    {
+    position: relative;
+    padding: 30px;
+    width: 200px
+}
+img#opt2    {
+    position: relative;
+    padding: 30px;
+    width: 200px
+}
+img#opt3    {
+    position: relative;
+    padding: 30px;
+    width: 200px
+}
+h1 {
+    position: relative;
+    padding: 15px;
+    text-align: center;
+    font-size: 32px;
+    color: white;
+}
+p {
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+main {
+    background-color: black;
+}
+canvas#resultsChart {
+    padding: 15px;
 
+}

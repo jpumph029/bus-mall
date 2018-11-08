@@ -74,12 +74,9 @@ function handlesUserClicks() {
   if (maxClicks < 25) {
     localStorage.setItem('voteData', JSON.stringify(allOptions));
     drawOptions();
-  } else if (maxClicks === 25) {
+  }
+  if (maxClicks === 25) {
     displayChart();
-    document.getElementById('clearData').addEventListener('click', function () {
-      localStorage.clear();
-      window.location.reload();
-    });
   }
 }
 // makes the Options clickable
@@ -105,9 +102,9 @@ function displayChart() {
     data: {
       labels: names,
       datasets: [{
-        label: "My First dataset",
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
+        label: "Votes Per Image",
+        backgroundColor: 'rgb(255, 99, 200)', 
+        borderColor: 'rgb(255, 255, 255)',
         data: votes,
       }]
     },
@@ -118,12 +115,20 @@ function displayChart() {
     }
   });
 }
+
+// adds a function and click event listen to a button
+document.getElementById('clearData').addEventListener('click', function () {
+  localStorage.clear();
+  window.location.reload();
+});
+
+// checks to see if there is local storage and parses 
 (function localStorageCheck() {
   if (localStorage.voteData) {
     console.log('There are items in localStorage');
-    var parsedOptions = JSON.parse(localStorage.voteData);
     for (var i = 0; i < allOptions.length; i++) {
-      allOptions = parsedOptions;
+      allOptions = JSON.parse(localStorage.getItem('voteData'));
+      console.log('you are decoding')
     }
   }
   else {
