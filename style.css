@@ -23,18 +23,17 @@ h1 {
     padding: 15px;
     text-align: center;
     font-size: 32px;
-    color: white;
+    color: #afd5f7;
 }
 p {
     padding: 15px;
     position: relative;
     text-align: center;
-    color: white;
+    color: #ccc;
 }
 main {
     background-color: black;
 }
 canvas#resultsChart {
     padding: 15px;
-
 }

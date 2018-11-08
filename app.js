@@ -102,9 +102,8 @@ function displayChart() {
     data: {
       labels: names,
       datasets: [{
-        label: "Votes Per Image",
-        backgroundColor: 'rgb(255, 99, 200)', 
-        borderColor: 'rgb(255, 255, 255)',
+        label: 'Votes Per Image',
+        backgroundColor: '#afd5f7', 
         data: votes,
       }]
     },
